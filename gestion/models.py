@@ -10,7 +10,7 @@ from django.db import models
  \____|\___||___/\__|_|\___/|_| |_|
 """
 
-# Create your models here.
+# Classe de définition d'un usager
 class Porteur(models.Model):
     class Meta:
         verbose_name_plural = "Gestion des porteurs"
@@ -28,7 +28,8 @@ class Porteur(models.Model):
     
     def __unicode__(self):
         return self.nom + ", " + self.prenom 
-    
+
+# Classe décrivant les cartes    
 class Carte(models.Model):
     class Meta:
         verbose_name_plural = "Gestion des cartes"
@@ -59,7 +60,8 @@ class Service(models.Model):
 
     def __unicode__(self):
         return self.nom
-    
+
+# Classe qui définit la relation entre un usager et le service    
 class SouscriptionSvc(models.Model):
     class Meta:
         verbose_name_plural = "Service souscrit"
