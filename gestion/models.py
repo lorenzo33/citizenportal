@@ -73,7 +73,8 @@ class Bornes(models.Model):
         )   
             
     nom = models.CharField(max_length=100)
-    lieu = models.CharField(max_length=100)	
+    lieu = models.CharField(max_length=100)
+    adresse_ip = models.CharField(max_length=20)		
     etat = models.IntegerField(choices=STATUT_BORNE, default=1)
     service = models.ForeignKey(Service)
     
