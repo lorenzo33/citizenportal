@@ -1,0 +1,13 @@
+{% extends "accueil/base.html" %}
+
+{% load static %}
+
+{% block title %}Pass Citoyen Multiservices - Accueil{% endblock title %}
+
+{% block base_body %}
+<body>
+            <h1>Bienvenue sur le Portail du Pass Citoyen Multiservices</h1>
+            <p>Nous sommes le {{ current_date_time }}.</p>
+            <img width="350px" src="{% get_media_prefix %}cmdb/icons/svg/logo.svg"></a></h1>
+</body>
+{% endblock base_body %}

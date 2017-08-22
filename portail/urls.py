@@ -1,8 +1,7 @@
 from django.conf.urls import url
-
 from . import views
 
-app_name = 'accueil'
+app_name = 'portail'
 urlpatterns = [
     url(r'^$', views.index, name='index'),
 ]
