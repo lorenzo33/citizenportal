@@ -61,6 +61,25 @@ class Service(models.Model):
     def __unicode__(self):
         return self.nom
 
+# Classe décrivant les bornes    
+class Bornes(models.Model):
+    class Meta:
+        verbose_name_plural = "Gestion des bornes"
+        unique_together = ('etat', 'service')
+    
+    STATUT_BORNE = (
+        (1, "Active"),
+        (2, "HS"),
+        )   
+            
+    nom = models.CharField(max_length=100)
+    lieu = models.CharField(max_length=100)	
+    etat = models.IntegerField(choices=STATUT_BORNE, default=1)
+    service = models.ForeignKey(Service)
+    
+    def __unicode__(self):
+        return self.nom + "(" + unicode(str(self.service), "utf8") + ")"
+
 # Classe qui définit la relation entre un usager et le service    
 class SouscriptionSvc(models.Model):
     class Meta:
