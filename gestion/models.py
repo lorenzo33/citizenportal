@@ -75,6 +75,7 @@ class Bornes(models.Model):
     nom = models.CharField(max_length=100)
     lieu = models.CharField(max_length=100)
     adresse_ip = models.GenericIPAddressField(protocol='IPv4')		
+    adresse_mac = models.CharField("Adresse MAC", max_length=50, blank=True, null=True)
     etat = models.IntegerField(choices=STATUT_BORNE, default=1)
     service = models.ForeignKey(Service)
     
