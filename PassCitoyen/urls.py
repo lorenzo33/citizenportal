@@ -14,11 +14,15 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url, include
+import xadmin
 from django.contrib import admin
 from portail import views
 
+xadmin.autodiscover()
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^xadmin/', xadmin.site.urls),
     
     # La page d'accueil du portail
     url(r'^$', views.index),
