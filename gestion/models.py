@@ -88,6 +88,7 @@ class SouscriptionSvc(models.Model):
         
     service = models.ForeignKey(Service)
     usager = models.ForeignKey(Porteur)
+    date_debut = models.DateField("Date de début", null=True, blank=True)
     date_fin = models.DateField("Date de fin", null=True, blank=True)
     
     
