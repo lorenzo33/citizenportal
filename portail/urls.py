@@ -4,4 +4,5 @@ from . import views
 app_name = 'portail'
 urlpatterns = [
     url(r'^$', views.index, name='index'),
+    url(r'^porteurs/$', views.liste_porteurs, name='liste_porteurs'),
 ]

@@ -1,0 +1,20 @@
+{% extends "accueil/base.html" %}
+
+{% load static %}
+
+{% block title %}Pass Citoyen Multiservices - Liste des porteurs{% endblock title %}
+
+{% block base_body %}
+<body>
+    <h5>Liste des porteurs :</h5>
+    {% for porteur in liste_des_porteurs %}
+    <b>Nom:</b> {{ porteur.nom }}
+    <br>
+    <b>Prénom:</b> {{ porteur.prenom }}
+    <br>
+    <b>Statut:</b> {{ porteur.statut }}
+    <br>
+    <br>
+    {% endfor %}
+</body>
+{% endblock base_body %}

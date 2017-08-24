@@ -8,9 +8,5 @@ class Base(Settings):
 
 class Comm(Settings):
     menu_style = 'accordion'
-    global_models_icon = {
-        Porteur : 'fa fa-user',
-        Carte : 'fa fa-server',
-    }
     site_title = 'PCM - Pass Citoyen Multiservice'
     site_footer = 'PCM - Pass Citoyen Multiservice - v0.1 (PROD)'
