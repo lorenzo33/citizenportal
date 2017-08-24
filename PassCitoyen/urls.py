@@ -23,6 +23,8 @@ xadmin.autodiscover()
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^xadmin/', xadmin.site.urls),
+    url(r'^logout/$', 'django.contrib.auth.views.logout',
+                          {'next_page': '/accueil/'}),
     
     # La page d'accueil du portail
     url(r'^$', views.index),

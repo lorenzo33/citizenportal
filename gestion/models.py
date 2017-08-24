@@ -40,8 +40,9 @@ class Carte(models.Model):
     )   
             
     code = models.CharField(max_length=100)
-    date_activation = models.DateField(verbose_name="Date activation",blank=True, null=True)
-    date_inactivation = models.DateField(verbose_name="Date inactivation",blank=True, null=True)
+    date_activation = models.DateField(verbose_name="Date d'activation",blank=True, null=True)
+    date_desactivation = models.DateField(verbose_name="Date de désactivation",blank=True, null=True)
+    motif = models.CharField(max_length=100, blank=True, null=True)    
     statut = models.IntegerField(choices=STATUT_CARTE, default=1)
     porteur = models.ForeignKey(Porteur)
     
