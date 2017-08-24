@@ -13,9 +13,8 @@ from django.db import models
 # Classe de définition d'un usager
 class Porteur(models.Model):
     class Meta:
-        verbose_name_plural = "Gestion des porteurs"
-        
-        
+        verbose_name_plural = "Gestion des Adhérents"
+       
     STATUT_SI = (
         (0, "Inactif"),
         (1, "Actif"),
@@ -32,7 +31,7 @@ class Porteur(models.Model):
 # Classe décrivant les cartes    
 class Carte(models.Model):
     class Meta:
-        verbose_name_plural = "Gestion des cartes"
+        verbose_name_plural = "Gestion des Cartes"
         unique_together = ('statut', 'porteur')
     
     STATUT_CARTE = (
@@ -41,13 +40,13 @@ class Carte(models.Model):
     )   
             
     code = models.CharField(max_length=100)
-    date_delivrance = models.DateField(blank=True, null=True)
-    date_mise_opposition = models.DateField(blank=True, null=True)
+    date_activation = models.DateField(verbose_name="Date activation",blank=True, null=True)
+    date_inactivation = models.DateField(verbose_name="Date inactivation",blank=True, null=True)
     statut = models.IntegerField(choices=STATUT_CARTE, default=1)
     porteur = models.ForeignKey(Porteur)
     
     def __unicode__(self):
-        return self.code + "(" + unicode(str(self.porteur), "utf8") + ")"
+        return self.code + " - (" + unicode(str(self.porteur), "utf8") + ")"
     
 # Classe pour gérer les services
 class Service(models.Model):
@@ -63,7 +62,7 @@ class Service(models.Model):
 # Classe décrivant les bornes    
 class Bornes(models.Model):
     class Meta:
-        verbose_name_plural = "Gestion des bornes"
+        verbose_name_plural = "Gestion des Bornes"
         unique_together = ('etat', 'service')
     
     STATUT_BORNE = (
@@ -79,16 +78,15 @@ class Bornes(models.Model):
     service = models.ForeignKey(Service)
     
     def __unicode__(self):
-        return self.nom + "(" + unicode(str(self.service), "utf8") + ")"
+        return self.nom + "( " + unicode(str(self.service), "utf8") + " )"
 
 # Classe qui définit la relation entre un usager et le service    
 class SouscriptionSvc(models.Model):
     class Meta:
-        verbose_name_plural = "Service souscrit"
+        verbose_name_plural = "Service(s) souscrit(s)"
         
     service = models.ForeignKey(Service)
     usager = models.ForeignKey(Porteur)
     date_debut = models.DateField("Date de début", null=True, blank=True)
     date_fin = models.DateField("Date de fin", null=True, blank=True)
-    
-    
+    date_reglement = models.DateField("Date de réglement", null=True, blank=True)

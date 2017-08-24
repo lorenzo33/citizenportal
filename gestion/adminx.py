@@ -32,12 +32,19 @@ class PorteurAdmin(object):
     )
     
 class CarteAdmin(object):
+    list_display = ('code','statut','porteur')
+    search_fields = ('code',)
+
+
     model_icon = 'fa fa-address-card-o '
     
 class ServiceAdmin(object):
     model_icon = 'fa fa-handshake-o'
     
 class BornesAdmin(object):
+
+    list_display = ('nom','lieu','adresse_ip','etat','service')
+    search_fields = ('nom')
     model_icon = 'fa fa-podcast'
 
 ###########################################################
