@@ -37,8 +37,7 @@ class Carte(models.Model):
     
     STATUT_CARTE = (
         (1, "Active"),
-        (2, "Obsolète"),
-        (3, "En opposition"),
+        (2, "Inactive"),
     )   
             
     code = models.CharField(max_length=100)
