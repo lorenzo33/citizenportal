@@ -6,7 +6,38 @@
 
 {% block base_body %}
 <body>
-            <h1>Bienvenue sur le Portail du Pass Citoyen Multiservices</h1>
+            <h1 align="center">Portail Pass Citoyen Multiservices</h1>
+            <h2>Bienvenue</h2>
+            
+            <h3>Choisissez votre profil :</h3>
+            
+            <table width=100% border=0 align="center">
+            	<tr>
+            		<td>
+            			<ul> 
+            				<h4>Je suis un gestionnaire....</h4>
+            				<li>Gestion des services</li>
+            				<li>Gestion des adhérents</li>
+            				<li>Gestion des cartes</li>
+            				<li>Gestion des bornes</li>            		
+            			</ul>
+            		
+            		</td>
+            		
+            		<td width=50px>     </td>
+            		
+            		<td> 
+            			<ul> 
+            				<h4>Je suis un adhérent...</h4>
+            				<li>Consulter mes informations</li>
+            			</ul>            		
+            		</td>
+            		
+            		
+            		
+            	</tr>	
+            </table>
+            
             <p>Nous sommes le {{ current_date_time }}.</p>
             <img width="350px" src="{% get_media_prefix %}cmdb/icons/svg/logo.svg"></a></h1>
 </body>
