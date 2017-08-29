@@ -1,0 +1,32 @@
+{% extends "accueil/base.html" %}
+
+{% load static %}
+
+{% block title %}Pass Citoyen Multiservices - Liste des porteurs{% endblock title %}
+
+{% block base_body %}
+<body>
+    <h5>Liste des souscriptions :</h5>
+        
+    {% regroup liste_des_souscriptions by service.nom as souscriptions_list %}
+
+	<ul class="accordion" data-accordion>
+  	{% for souscription in souscriptions_list %}
+  		<li class="accordion-navigation">
+    		<a href="#panel1{{ forloop.counter }}a">{{ souscription.grouper }} ({{ souscription.list|length }} adhérent(s))</a>
+    		{% if forloop.counter == 1 %}
+    		<div id="panel1{{ forloop.counter }}a" class="content active">
+    		{% else %}
+    		<div id="panel1{{ forloop.counter }}a" class="content">
+	    	{% endif %}
+    	 	<ul>
+				{% for item in souscription.list %}
+					<p><b>Nom adhérent : </b> {{ item.porteur }}, <b>Date début souscription : </b> {{ item.date_debut }} </p> 
+				{% endfor %}
+      		</ul>
+    		</div>
+  		</li>
+  {% endfor %}
+</ul>    
+</body>
+{% endblock base_body %}

@@ -87,7 +87,7 @@ class SouscriptionSvc(models.Model):
         verbose_name_plural = "Service(s) souscrit(s)"
         
     service = models.ForeignKey(Service)
-    usager = models.ForeignKey(Porteur)
+    porteur = models.ForeignKey(Porteur)
     date_debut = models.DateField("Date de début", null=True, blank=True)
     date_fin = models.DateField("Date de fin", null=True, blank=True)
     date_reglement = models.DateField("Date de réglement", null=True, blank=True)

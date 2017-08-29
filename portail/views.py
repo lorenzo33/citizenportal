@@ -21,3 +21,11 @@ def liste_porteurs(request):
         'liste_des_porteurs': liste_des_porteurs,
     }
     return HttpResponse(template.render(context, request))
+
+def liste_souscriptions(request):
+    liste_des_souscriptions = SouscriptionSvc.objects.all().order_by('service')
+    template = loader.get_template('consultation/liste_souscriptions.html')
+    context = {
+        'liste_des_souscriptions': liste_des_souscriptions,
+    }
+    return HttpResponse(template.render(context, request))
