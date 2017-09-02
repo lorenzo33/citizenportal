@@ -15,7 +15,6 @@ def login(request):
 
 def liste_porteurs(request):
     liste_des_porteurs = Porteur.objects.all().order_by('nom')
-    liste_des_services = Service.objects
     template = loader.get_template('consultation/liste_porteurs.html')
     context = {
         'liste_des_porteurs': liste_des_porteurs,

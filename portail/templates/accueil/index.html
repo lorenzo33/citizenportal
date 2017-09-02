@@ -1,44 +1,52 @@
-{% extends "accueil/base.html" %}
+{% extends 'xadmin/base.html' %}
+{% load i18n xadmin_tags %}
+{% block title %}Pass Citoyen Multiservices - Accueil{% endblock %}
 
-{% load static %}
+{% block body %}
 
-{% block title %}Pass Citoyen Multiservices - Accueil{% endblock title %}
+{% block content %}
+<div class="container">
+  	
+  	<div class="jumbotron">
+    	<h1>Pass Citoyen Multiservices</h1>      
+    	<p>Bienvenue sur le portail de consultation et de gestion Pass Citoyens Multiservices.</p>            
+  	</div>
+  	
+  	<div class="row">
+    	<div class="col-sm-4" style="background-color:lavender;" align='center'>
+    		<ul> 
+            	<h4>Je suis un adhérent...</h4>
+            		<li>Consulter mes informations</li>
+            </ul>
+            <p><button type="button" class="btn btn-primary">Consulter mon compte</button></p>
+               
+    	</div>
+    	
+    	<div class="col-sm-4" style="background-color:none;">
+    		<h2 align='center'>Choisissez votre profil</h2>
+    	</div>
+    	
+    	<div class="col-sm-4" style="background-color:lavender;" align="center" >
+    		<ul> 
+            	<h4>Je suis un gestionnaire....</h4>
+           		<li>Gestion des services</li>
+           		<li>Gestion des adhérents</li>
+           		<li>Gestion des cartes</li>
+           		<li>Gestion des bornes</li>           		           		
+            </ul>
+            <p><a href="/PassCitoyen/xadmin" class="btn btn-danger" role="button">Accès à l'interface d'administration</a></p>           		
+    	</div>
+  	</div>  	
+</div>
+{% endblock content %}
 
-{% block base_body %}
-<body>
-            <h1 align="center">Portail Pass Citoyen Multiservices</h1>
-            <h2>Bienvenue</h2>
-            
-            <h3>Choisissez votre profil :</h3>
-            
-            <table width=100% border=0 align="center">
-            	<tr>
-            		<td>
-            			<ul> 
-            				<h4>Je suis un gestionnaire....</h4>
-            				<li>Gestion des services</li>
-            				<li>Gestion des adhérents</li>
-            				<li>Gestion des cartes</li>
-            				<li>Gestion des bornes</li>            		
-            			</ul>
-            		
-            		</td>
-            		
-            		<td width=50px>     </td>
-            		
-            		<td> 
-            			<ul> 
-            				<h4>Je suis un adhérent...</h4>
-            				<li>Consulter mes informations</li>
-            			</ul>            		
-            		</td>
-            		
-            		
-            		
-            	</tr>	
-            </table>
-            
-            <p>Nous sommes le {{ current_date_time }}.</p>
-            <img width="350px" src="{% get_media_prefix %}cmdb/icons/svg/logo.svg"></a></h1>
-</body>
-{% endblock base_body %}
+{% block footer %}
+<div id="footer">
+   <hr/>
+   <footer class="text-center">
+       <p>&copy; {% block site_footer %}Portail Citoyen Multiservices{% endblock %}</p>
+   </footer>
+</div>
+{% endblock %}
+
+{% endblock body %}

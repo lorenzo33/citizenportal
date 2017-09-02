@@ -14,6 +14,7 @@ from django.db import models
 class Porteur(models.Model):
     class Meta:
         verbose_name_plural = "Gestion des Adhérents"
+	ordering = ['nom','prenom']
        
     STATUT_SI = (
         (0, "Inactif"),
@@ -33,6 +34,7 @@ class Carte(models.Model):
     class Meta:
         verbose_name_plural = "Gestion des Cartes"
         unique_together = ('statut', 'porteur')
+	ordering = ['code','porteur']
     
     STATUT_CARTE = (
         (1, "Active"),
@@ -53,6 +55,7 @@ class Carte(models.Model):
 class Service(models.Model):
     class Meta:
         verbose_name_plural = "Gestion des Services"
+	ordering = ['nom']
         
     nom = models.CharField(max_length=100)
     description = models.TextField()
@@ -65,6 +68,7 @@ class Bornes(models.Model):
     class Meta:
         verbose_name_plural = "Gestion des Bornes"
         unique_together = ('etat', 'service')
+	ordering = ['nom']
     
     STATUT_BORNE = (
         (1, "Active"),

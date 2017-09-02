@@ -2,10 +2,22 @@
 import xadmin
 from xadmin.layout import Tab, TabHolder, Fieldset, PrependedText, Row
 from xadmin.plugins.inline import Inline
+from xadmin import views
 from easy_select2 import select2_modelform
 
 from gestion.models import Porteur, Carte, Service, Bornes, SouscriptionSvc
 
+class StatsView(views.CommAdminView):
+
+    def get(self, request, *args, **kwargs):
+        liste_des_souscriptions = SouscriptionSvc.objects.all().order_by('service')
+        context = {
+                   'liste_des_souscriptions': liste_des_souscriptions,
+        }
+        return self.template_response('stats/stats.html', context)
+
+xadmin.site.register_view(r'stats/$', StatsView, name='stats')
+    
 
 class SouscriptionSvcInLine(object):
     model = SouscriptionSvc
