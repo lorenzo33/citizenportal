@@ -1,42 +1,27 @@
-{% extends 'xadmin/base.html' %}
+{% extends 'base.html' %}
 {% load i18n xadmin_tags %}
 
 {% block title %}Pass Citoyen Multiservices - Connexion{% endblock %}
 
-{% block body %}
-
-{% block content %}
-	<div class="container">
-		<div class="jumbotron">
-    		<h1>Pass Citoyen Multiservices</h1>      
-    		<p>Bienvenue sur le portail de consultation et de gestion Pass Citoyens Multiservices.</p>            
-  		</div>
-		
-		<div class="row", align="center">
-			<div class="col-sm-4" style="background-color:none;"></div>
-    		<div class="col-sm-4" style="background-color:lavender;" align='center'>
-    			<h1 style="background-color:steelblue" >Connectez-vous</h1>
-				<form action="login" method="post">
-					{{ form.as_p }}
-					<p>	
-						<input type="submit" value="Se connecter" />
-						<a href="#">Créer un compte</a>
-					</p>
-				</form>
-			</div>
-			<div class="col-sm-4" style="background-color:none;"></div>
+{% block contenu %}
+	<div class="row", align="center">
+		<div class="col-sm-4" style="background-color:none;"></div>
+		<div class="col-sm-4" style="background-color:whitesmoke;" align='center'>
+			<p></p>
+    		<form action="login" method="post">
+				{{ form.as_p }}
+				
+				<div>
+					<p></p>					
+					<input type="submit" value="Se connecter" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<a href="#">Créer un compte</a>					
+				</div>
+			</form>
+			<p></p>
 		</div>
+		<div class="col-sm-4" style="background-color:none;"></div>
 	</div>
 	
-{% endblock content %}
+	
+{% endblock contenu %}
 
-{% block footer %}
-	<div id="footer">
-   		<hr/>
-   		<footer class="text-center">
-       		<p>&copy; {% block site_footer %}Portail Citoyen Multiservices{% endblock %}</p>
-   		</footer>
-	</div>
-{% endblock %}
-
-{% endblock body %}

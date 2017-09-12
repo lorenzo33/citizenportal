@@ -4,7 +4,7 @@ from gestion.models import Porteur
 
 class LoginForm(forms.Form):
     #On définit les champs de saisie du formulaire
-    id = forms.CharField(label='Identifiant')
+    id = forms.CharField(label='Identifiant ')
     password = forms.CharField(label='Mot de passe',
                                widget = forms.PasswordInput)
     def clean(self):

@@ -6,26 +6,34 @@
 	<nav class="navbar navbar-inverse">
   		<div class="container-fluid">
     		<div class="navbar-header">
-      		<a class="navbar-brand" href="#">Pass Citoyen Multiservices</a>
+      		<a class="navbar-brand" href="#"></a>
     		</div>
     		<ul class="nav navbar-nav">
-      			<li class="active"><a href="#">Home</a></li>
+      			<li class="active"><a href="#">Mon portail</a></li>
       			<li><a href="#">Modifier mes données</a></li>
-      			<li><a href="#">Souscrire à un service</a></li>
-      			<li><a href="/PassCitoyen/logout">Me déconnecter</a></li>
+      			<li><a href="#">Souscrire à un service</a></li>  
     		</ul>
+    		<ul class="nav navbar-nav navbar-right">
+      			<li><a href="#"><span class="glyphicon glyphicon-user"></span> {{ logged_user.prenom }} {{ logged_user.nom }} </a></li>
+      			<li><a href="/PassCitoyen/logout"><span class="glyphicon glyphicon-log-in"></span>Logout</a></li>
+		    </ul>    		
   		</div>
 	</nav>    
     
-    <div class="col-sm-12" style="background-color:lightgray;">    		  
+    <div class="col-sm-12" style="background-color:aliceblue;">    		  
     	<div align='left'>
-    		<h1>Bienvenue</h1>
-    		<p>Bonjour, {{ logged_user.prenom }} {{ logged_user.nom }} !</p>
-    		<p>Date de naissance : {{ logged_user.date_de_naissance }}<p>
-    	</div>
-    	<h2>Mes services</h2>
+    		<h1>Bienvenue sur votre compte</h1>
+    		<p>Vous trouverez ci-dessous les informations concernant votre compte personnel<p>
+    		
+    		<h2>Mes Coordonnées</h2>
+    		<p><b>Nom :</b> {{logged_user.nom }}</p>
+    		<p><b>Prénom :</b> {{logged_user.prenom }}</p>
+    		<p><b>Date de naissance :</b>{{logged_user.date_de_naissance }}</p>
+		    <p><b>Adresse :</b> {% if logged_user.adresse_postale %}{{logged_user.adresse_postale }}{% endif %}</p>
+    		<p><b>Téléphone :</b>{% if logged_user.telephone %}{{logged_user.telephone }}{% endif %}</p>    		
+    	</div> 	
     	
-    	<table class="table table-striped">
+    	<table class="table table-hover">
     		<thead>
       			<tr>
         			<th>Nom</th>
@@ -43,7 +51,13 @@
       			</tr>
       			{% endfor %}
       		</tbody>   		
-    	</table>    	 
+    	</table>
+    	
+    	    	
+    </div>
+    
+    	
+   
     </div>  
         
 {% endblock contenu %}

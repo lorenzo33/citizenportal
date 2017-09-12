@@ -2,23 +2,23 @@
 {% load i18n xadmin_tags %}
 
 {% block content %}
+
+<div class="jumbotron" align="center">  		
+  		<a href="/PassCitoyen/"><img alt="Pass Citoyen Multiservice" src="/media/LogoPortail.png" height="20%" width="20%"></a>  		
+  		<p>Bienvenue sur le portail de consultation et de gestion Pass Citoyens Multiservices.</p>
+ </div>   
+
 <div class="container">
-  	
-  	<div class="jumbotron">
-    	<h1>Pass Citoyen Multiservices</h1>      
-    	<p>Bienvenue sur le portail de consultation et de gestion Pass Citoyens Multiservices.</p>            
-  	</div>
-  	
   	<div class="row">
   		{% block contenu %}{% endblock contenu %}    	
-  	</div>  	
-</div>
-<div id="footer">
+ 	</div>  	
+
+	<div id="footer">
    		<hr/>
    		<footer class="text-center">
        		<p>&copy; {% block site_footer %}Portail Citoyen Multiservices{% endblock %}</p>
    		</footer>
-</div>
+	</div>
 {% endblock content %}
 
 
