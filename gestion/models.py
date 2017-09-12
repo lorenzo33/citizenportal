@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from gtk.keysyms import blank
 
 """
  / ___| ___  ___| |_(_) ___  _ __  
@@ -14,6 +15,7 @@ from django.db import models
 class Porteur(models.Model):
     class Meta:
         verbose_name_plural = "Gestion des Adhérents"
+        
 	ordering = ['nom','prenom']
        
     STATUT_SI = (
@@ -23,8 +25,13 @@ class Porteur(models.Model):
         
     nom = models.CharField(max_length=100)
     prenom = models.CharField(max_length=100)
+    adresse_mail = models.EmailField(verbose_name="courriel", blank=True, null=True)
+    identifiant = models.CharField(max_length=50,verbose_name='Identifiant compte', blank=True, null=True, unique=True)
+    mot_de_passe = models.CharField(max_length=30, blank=True, null=True, default='bienvenue')
     date_de_naissance = models.DateField()
     statut = models.BooleanField(choices=STATUT_SI, default=1)
+    adresse_postale = models.TextField(blank=True, null=True)
+    telephone = models.CharField(blank=True, null=True, max_length=100)
     
     def __unicode__(self):
         return self.nom + ", " + self.prenom 
@@ -46,7 +53,7 @@ class Carte(models.Model):
     date_desactivation = models.DateField(verbose_name="Date de désactivation",blank=True, null=True)
     motif = models.CharField(max_length=100, blank=True, null=True)    
     statut = models.IntegerField(choices=STATUT_CARTE, default=1)
-    porteur = models.ForeignKey(Porteur)
+    porteur = models.ForeignKey(Porteur, blank=True, null=True)
     
     def __unicode__(self):
         return self.code + " - (" + unicode(str(self.porteur), "utf8") + ")"
@@ -80,7 +87,7 @@ class Bornes(models.Model):
     adresse_ip = models.GenericIPAddressField(protocol='IPv4')		
     adresse_mac = models.CharField("Adresse MAC", max_length=50, blank=True, null=True)
     etat = models.IntegerField(choices=STATUT_BORNE, default=1)
-    service = models.ForeignKey(Service)
+    service = models.ForeignKey(Service, blank=True, null=True)
     
     def __unicode__(self):
         return self.nom + "( " + unicode(str(self.service), "utf8") + " )"

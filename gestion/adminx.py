@@ -4,6 +4,7 @@ from xadmin.layout import Tab, TabHolder, Fieldset, PrependedText, Row
 from xadmin.plugins.inline import Inline
 from xadmin import views
 from easy_select2 import select2_modelform
+from django.forms import PasswordInput, ModelForm
 
 from gestion.models import Porteur, Carte, Service, Bornes, SouscriptionSvc
 
@@ -25,7 +26,7 @@ class SouscriptionSvcInLine(object):
     extra = 3
 
 class PorteurAdmin(object):
-    
+  
     list_display = ('nom','prenom','statut')
     search_fields = ('nom',)
     list_filter = ('statut',)
@@ -36,9 +37,12 @@ class PorteurAdmin(object):
     form_layout = (
         TabHolder(
             Tab('Général',
-                Fieldset('Généralités','nom','prenom','date_de_naissance','statut'),                         
+                Fieldset('Généralités','nom','prenom','adresse_postale', 'telephone','date_de_naissance','statut'),                         
                 Inline(SouscriptionSvc),
             ),
+            Tab('Accès web',
+                Fieldset('Informations de connexion','identifiant','mot_de_passe','adresse_mail'),
+            ),                  
                               
         ),                      
     )

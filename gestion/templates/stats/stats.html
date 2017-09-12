@@ -13,42 +13,21 @@
 	  	<div class="panel panel-default">
 	    	<div class="panel-heading">
 	      		<h4 class="panel-title">
-	        		<a data-toggle="collapse" data-parent="#accordion" href="#collapse1">{{souscription.porteur}}</a>
+	        		<a data-toggle="collapse" data-parent="#accordion" href="#collapse{{ forloop.counter }}">{{ souscription.grouper }} ({{ souscription.list|length }} adhérent(s))</a>
 	      		</h4>
 	    	</div>
-	    	<div id="collapse1" class="panel-collapse collapse in">
-	      		<div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-	      		sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-	      		minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-	      		commodo consequat.
+	    	
+	    	<div id="collapse{{ forloop.counter }}" class="panel-collapse collapse in">
+	      		
+	      		<div class="panel-body">
+	      		{% for item in souscription.list %}
+					<p><b>Nom adhérent : </b> {{ item.porteur }}, <b>Date début souscription : </b> {{ item.date_debut }} </p> 
+				{% endfor %}
 	      		</div>
 	    	</div>
 	  	</div>
 	  	{% endfor %}
 	 </div>
-
-	
-
-
-
-
-	<ul class="accordion" data-accordion>
-   		{% for souscription in souscriptions_list %}
-  		<li class="accordion-navigation">
-    		<a href="#panel1{{ forloop.counter }}a">{{ souscription.grouper }} ({{ souscription.list|length }} adhérent(s))</a>
-    		{% if forloop.counter == 1 %}
-    		<div id="panel1{{ forloop.counter }}a" class="content active">
-    		{% else %}
-    		<div id="panel1{{ forloop.counter }}a" class="content">
-	    	{% endif %}
-    	 	<ul>
-				{% for item in souscription.list %}
-					<p><b>Nom adhérent : </b> {{ item.porteur }}, <b>Date début souscription : </b> {{ item.date_debut }} </p> 
-				{% endfor %}
-      		</ul>
-    		</div>
-  		</li>
-  		{% endfor %}
-	</ul>    
+ 
 </body>
 {% endblock content %}

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block title %}Pass Citoyen Multiservices - Mon compte{% endblock %}
+
+
+{% block contenu %}
+	<nav class="navbar navbar-inverse">
+  		<div class="container-fluid">
+    		<div class="navbar-header">
+      		<a class="navbar-brand" href="#">Pass Citoyen Multiservices</a>
+    		</div>
+    		<ul class="nav navbar-nav">
+      			<li class="active"><a href="#">Home</a></li>
+      			<li><a href="#">Modifier mes données</a></li>
+      			<li><a href="#">Souscrire à un service</a></li>
+      			<li><a href="/PassCitoyen/logout">Me déconnecter</a></li>
+    		</ul>
+  		</div>
+	</nav>    
+    
+    <div class="col-sm-12" style="background-color:lightgray;">    		  
+    	<div align='left'>
+    		<h1>Bienvenue</h1>
+    		<p>Bonjour, {{ logged_user.prenom }} {{ logged_user.nom }} !</p>
+    		<p>Date de naissance : {{ logged_user.date_de_naissance }}<p>
+    	</div>
+    	<h2>Mes services</h2>
+    	
+    	<table class="table table-striped">
+    		<thead>
+      			<tr>
+        			<th>Nom</th>
+        			<th>Date début</th>
+        			<th>Date fin</th>
+      			</tr>      			
+    		</thead>
+    		
+    		<tbody>
+      			{% for item in services_souscris %}
+      			<tr>
+      				<td>{% if item.service %}{{ item.service }}{% endif %}</td>
+        			<td>{% if item.date_debut %}{{ item.date_debut }}{% endif %}</td>
+        			<td>{% if item.date_fin %}{{ item.date_fin }}{% endif %}</td>
+      			</tr>
+      			{% endfor %}
+      		</tbody>   		
+    	</table>    	 
+    </div>  
+        
+{% endblock contenu %}
