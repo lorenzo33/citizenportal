@@ -37,7 +37,7 @@ class PorteurAdmin(object):
     form_layout = (
         TabHolder(
             Tab('Général',
-                Fieldset('Généralités','nom','prenom','adresse_postale', 'telephone','date_de_naissance','statut'),                         
+                Fieldset('Généralités',Row('nom', 'statut'),Row('prenom','date_de_naissance'),'adresse_postale', 'telephone'),                         
                 
             ),
             Tab('Accès web',
@@ -52,9 +52,17 @@ class PorteurAdmin(object):
 class CarteAdmin(object):
     list_display = ('code','statut','porteur')
     search_fields = ('code',)
-
-
+    
     model_icon = 'fa fa-address-card-o '
+    
+    form_layout = (
+        TabHolder(
+            Tab('Général',
+                Fieldset('Généralités',Row('code', 'statut'),'porteur','date_activation', Row('date_desactivation','motif')),                         
+            ),
+        ),
+    )
+     
     
 class ServiceAdmin(object):
     model_icon = 'fa fa-handshake-o'
@@ -64,6 +72,18 @@ class BornesAdmin(object):
     list_display = ('nom','lieu','adresse_ip','etat','service')
     search_fields = ('nom')
     model_icon = 'fa fa-podcast'
+
+    form_layout = (
+        TabHolder(
+            Tab('Général',
+                Fieldset('Généralités',Row('nom', 'etat'),Row('lieu', 'service'), Row('adresse_ip','adresse_mac')),                         
+            ),
+        ),
+    )
+
+
+
+
 
 ###########################################################
 # Affichage des formulaires dans l'ordre défini

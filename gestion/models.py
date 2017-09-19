@@ -19,8 +19,8 @@ class Porteur(models.Model):
 	ordering = ['nom','prenom']
        
     STATUT_SI = (
-        (0, "Inactif"),
         (1, "Actif"),
+        (2, "Inactif"),
     )
         
     nom = models.CharField(max_length=100)
@@ -29,7 +29,7 @@ class Porteur(models.Model):
     identifiant = models.CharField(max_length=50,verbose_name='Identifiant compte', blank=True, null=True, unique=True)
     mot_de_passe = models.CharField(max_length=30, blank=True, null=True, default='bienvenue')
     date_de_naissance = models.DateField()
-    statut = models.BooleanField(choices=STATUT_SI, default=1)
+    statut = models.IntegerField(choices=STATUT_SI, default=1)
     adresse_postale = models.TextField(blank=True, null=True)
     telephone = models.CharField(blank=True, null=True, max_length=100)
     
