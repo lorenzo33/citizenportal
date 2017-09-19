@@ -2,7 +2,7 @@
 from django.shortcuts import render_to_response
 from datetime import datetime
 from django.http import HttpResponseRedirect, HttpResponse
-from gestion.models import Porteur, Service, SouscriptionSvc
+from gestion.models import Porteur, Service, SouscriptionSvc, Carte
 from forms import LoginForm
 from django.template import loader
 
@@ -41,8 +41,10 @@ def welcome(request):
         logged_user_id = request.session['logged_user_id']
         logged_user = Porteur.objects.get(id=logged_user_id)
         services_souscris = SouscriptionSvc.objects.filter(porteur=logged_user_id)
+        carte_porteur = Carte.objects.filter(porteur=logged_user_id)
         return render_to_response('consultation/welcome.html',
                                   {'logged_user': logged_user,
+                                  'carte_porteur': carte_porteur,
                                   'services_souscris' : services_souscris})
     else:
         return HttpResponseRedirect('/PassCitoyen/login')
