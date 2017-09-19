@@ -31,8 +31,40 @@
     		<p><b>Date de naissance :</b>{{logged_user.date_de_naissance }}</p>
 		    <p><b>Adresse :</b> {% if logged_user.adresse_postale %}{{logged_user.adresse_postale }}{% endif %}</p>
     		<p><b>Téléphone :</b>{% if logged_user.telephone %}{{logged_user.telephone }}{% endif %}</p>    		
-    	</div> 	
+    	</div>
     	
+    	<h2>Carte(s)</h2>
+    	<table class="table table-hover">
+    		<thead>
+      			<tr>
+        			<th>Numéro</th>
+        			<th>Statut</th>
+        			<th>Date d'activation</th>
+        			<th>Date de désactivation</th>
+        			<th>Motif</th>
+      			</tr>      			
+    		</thead>
+    		
+    		<tbody>
+    			{% for carte in carte_porteur %}
+    			<tr>
+    				<td>{{ carte.code }}</td>
+    				<td>{% if carte.statut == 1 %}
+    						Active
+    					{% else %}
+    						Inactive    					
+    					{% endif %}</td>
+    				<td>{% if carte.date_activation %}{{ carte.date_activation }}{% endif %}</td>
+    				<td>{% if carte.date_desactivation %}{{ carte.date_desactivation }}{% endif %}</td>
+    				<td>{% if carte.motif %}{{ carte.motif }}{% endif %}</td>   				    				  			
+    			</tr>    			
+    			{% endfor %}
+    		</tbody>
+    	</table>    	
+    	
+    		         	
+    	
+    	<h2>Mes Services</h2>
     	<table class="table table-hover">
     		<thead>
       			<tr>

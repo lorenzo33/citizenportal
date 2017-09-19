@@ -38,12 +38,14 @@ class PorteurAdmin(object):
         TabHolder(
             Tab('Général',
                 Fieldset('Généralités','nom','prenom','adresse_postale', 'telephone','date_de_naissance','statut'),                         
-                Inline(SouscriptionSvc),
+                
             ),
             Tab('Accès web',
                 Fieldset('Informations de connexion','identifiant','mot_de_passe','adresse_mail'),
-            ),                  
-                              
+            ),
+            Tab('Services',
+                Inline(SouscriptionSvc),  
+            ), 
         ),                      
     )
     
